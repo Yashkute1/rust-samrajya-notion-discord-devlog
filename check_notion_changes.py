@@ -21,9 +21,40 @@ HEADERS = {
     "Content-Type": "application/json",
 }
 
-COLOR_NEW = 0x57F287      # green
-COLOR_UPDATED = 0x5865F2  # blurple
-COLOR_REMOVED = 0xED4245  # red
+SERVER_NAME = "Rust Samrajya"
+
+# Colors keyed by task Status, so a player can tell progress at a glance
+# regardless of whether the card is a "new"/"updated"/"removed" event.
+STATUS_COLOR = {
+    "to do": 0x99AAB5,    # grey
+    "doing": 0xFAA61A,    # orange
+    "done": 0x57F287,     # green
+}
+DEFAULT_COLOR = 0x5865F2  # blurple, used when status is unrecognized
+REMOVED_COLOR = 0xED4245  # red, always used for removed tasks
+
+STATUS_EMOJI = {
+    "to do": "📋",
+    "doing": "🔨",
+    "done": "✅",
+}
+PRIORITY_EMOJI = {
+    "high": "🔴",
+    "medium": "🟡",
+    "low": "🟢",
+    "done": "✅",
+}
+CATEGORY_EMOJI = {
+    "bug": "🐛",
+    "feature": "✨",
+    "server config": "⚙️",
+}
+
+CHANGE_BADGE = {
+    "new": "🆕  New Task",
+    "updated": "✏️  Task Updated",
+    "removed": "🗑️  Task Removed",
+}
 
 
 def load_state():
@@ -68,6 +99,18 @@ def get_text(prop):
     return None
 
 
+def format_due(raw):
+    if not raw:
+        return None
+    # Notion dates are ISO 8601, e.g. "2026-06-20" or "2026-06-20T15:00:00.000+00:00"
+    try:
+        date_part = raw[:10]
+        dt = datetime.strptime(date_part, "%Y-%m-%d")
+        return dt.strftime("%b %d, %Y")
+    except ValueError:
+        return raw
+
+
 def extract_fields(page):
     props = page.get("properties", {})
 
@@ -80,6 +123,8 @@ def extract_fields(page):
     status = None
     assignee = None
     priority = None
+    category = None
+    due = None
 
     for key, val in props.items():
         lk = key.lower()
@@ -90,6 +135,10 @@ def extract_fields(page):
             assignee = get_text(val)
         if t in ("select", "multi_select") and ("priority" in lk or "tag" in lk) and priority is None:
             priority = get_text(val)
+        if t in ("select", "multi_select") and "categor" in lk and category is None:
+            category = get_text(val)
+        if t == "date" and due is None:
+            due = get_text(val)
 
     if status is None:
         for val in props.values():
@@ -100,8 +149,10 @@ def extract_fields(page):
     return {
         "title": title or "Untitled",
         "status": status or "—",
-        "assignee": assignee or "Unassigned",
+        "assignee": assignee,
         "priority": priority or "—",
+        "category": category,
+        "due": due,
         "last_edited_time": page.get("last_edited_time"),
         "url": page.get("url"),
     }
@@ -153,19 +204,43 @@ def fetch_all_pages(data_source_id):
 
 
 def build_embed(change_type, fields):
-    color = {"new": COLOR_NEW, "updated": COLOR_UPDATED, "removed": COLOR_REMOVED}[change_type]
-    badge = {"new": "New Task", "updated": "Task Updated", "removed": "Task Removed"}[change_type]
+    status_key = (fields.get("status") or "").lower()
+    priority_key = (fields.get("priority") or "").lower()
+    category_key = (fields.get("category") or "").lower()
+
+    if change_type == "removed":
+        color = REMOVED_COLOR
+    else:
+        color = STATUS_COLOR.get(status_key, DEFAULT_COLOR)
+
+    status_label = f"{STATUS_EMOJI.get(status_key, '•')} {fields['status']}"
+    priority_label = f"{PRIORITY_EMOJI.get(priority_key, '•')} {fields['priority']}"
+
+    title_prefix = CATEGORY_EMOJI.get(category_key, "")
+    title = f"{title_prefix} {fields['title']}".strip()
+
+    fields_block = [
+        {"name": "Status", "value": status_label, "inline": True},
+        {"name": "Priority", "value": priority_label, "inline": True},
+    ]
+
+    if fields.get("category"):
+        fields_block.append({"name": "Category", "value": fields["category"], "inline": True})
+
+    due_label = format_due(fields.get("due"))
+    if due_label:
+        fields_block.append({"name": "📅 Due", "value": due_label, "inline": True})
+
+    if fields.get("assignee"):
+        fields_block.append({"name": "Assignee", "value": fields["assignee"], "inline": True})
+
     embed = {
-        "title": fields["title"],
+        "title": title,
         "url": fields.get("url"),
         "color": color,
-        "author": {"name": badge},
-        "fields": [
-            {"name": "Status", "value": fields["status"], "inline": True},
-            {"name": "Assignee", "value": fields["assignee"], "inline": True},
-            {"name": "Priority", "value": fields["priority"], "inline": True},
-        ],
-        "footer": {"text": "Rust Samrajya — Tasks"},
+        "author": {"name": CHANGE_BADGE[change_type]},
+        "fields": fields_block,
+        "footer": {"text": f"{SERVER_NAME} — Dev Log"},
         "timestamp": fields.get("last_edited_time") or datetime.now(timezone.utc).isoformat(),
     }
     return embed

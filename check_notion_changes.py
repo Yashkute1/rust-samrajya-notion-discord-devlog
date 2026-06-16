@@ -10,7 +10,10 @@ DATABASE_ID = os.environ["NOTION_DATABASE_ID"]
 DISCORD_WEBHOOK_URL = os.environ["DISCORD_WEBHOOK_URL"]
 STATE_FILE = "state.json"
 
-NOTION_VERSION = "2022-06-28"
+# Notion split "databases" into databases + data sources in this API version.
+# Query endpoints now live under /v1/data_sources/{id}/query instead of
+# /v1/databases/{id}/query.
+NOTION_VERSION = "2025-09-03"
 
 HEADERS = {
     "Authorization": f"Bearer {NOTION_TOKEN}",
@@ -78,7 +81,6 @@ def extract_fields(page):
     assignee = None
     priority = None
 
-    # Prefer properties whose name hints at their purpose.
     for key, val in props.items():
         lk = key.lower()
         t = val.get("type")
@@ -89,7 +91,6 @@ def extract_fields(page):
         if t in ("select", "multi_select") and ("priority" in lk or "tag" in lk) and priority is None:
             priority = get_text(val)
 
-    # Fallback: take the first status/select property found.
     if status is None:
         for val in props.values():
             if val.get("type") in ("status", "select"):
@@ -106,10 +107,40 @@ def extract_fields(page):
     }
 
 
-def fetch_all_pages():
+def resolve_data_source_id():
+    """Look up the data source id(s) backing this database.
+
+    Under API version 2025-09-03, queries must target a data source, not the
+    database container itself. Most databases (including ones created before
+    this change) have exactly one data source, so we just take the first.
+    """
+    url = f"https://api.notion.com/v1/databases/{DATABASE_ID}"
+    resp = requests.get(url, headers=HEADERS, timeout=30)
+    if resp.status_code == 404:
+        raise SystemExit(
+            "Notion API returned 404 looking up the database.\n"
+            "This almost always means one of:\n"
+            "  1. NOTION_DATABASE_ID is wrong, or\n"
+            "  2. The Notion integration has not been connected to this "
+            "database (open the database in Notion -> ... menu -> "
+            "Connections -> add your integration).\n"
+            f"Database ID used: {DATABASE_ID}"
+        )
+    resp.raise_for_status()
+    data = resp.json()
+    data_sources = data.get("data_sources") or []
+    if not data_sources:
+        raise SystemExit(
+            "Database lookup succeeded but no data_sources were returned. "
+            "Response: " + json.dumps(data)[:500]
+        )
+    return data_sources[0]["id"]
+
+
+def fetch_all_pages(data_source_id):
     pages = []
     payload = {"page_size": 100}
-    url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
+    url = f"https://api.notion.com/v1/data_sources/{data_source_id}/query"
     while True:
         resp = requests.post(url, headers=HEADERS, json=payload, timeout=30)
         resp.raise_for_status()
@@ -123,7 +154,7 @@ def fetch_all_pages():
 
 def build_embed(change_type, fields):
     color = {"new": COLOR_NEW, "updated": COLOR_UPDATED, "removed": COLOR_REMOVED}[change_type]
-    badge = {"new": "🆕 New Task", "updated": "✏️ Task Updated", "removed": "🗑️ Task Removed"}[change_type]
+    badge = {"new": "New Task", "updated": "Task Updated", "removed": "Task Removed"}[change_type]
     embed = {
         "title": fields["title"],
         "url": fields.get("url"),
@@ -141,7 +172,6 @@ def build_embed(change_type, fields):
 
 
 def post_to_discord(embeds):
-    # Discord allows a max of 10 embeds per message.
     for i in range(0, len(embeds), 10):
         batch = embeds[i:i + 10]
         resp = requests.post(DISCORD_WEBHOOK_URL, json={"embeds": batch}, timeout=30)
@@ -152,7 +182,9 @@ def post_to_discord(embeds):
 
 def main():
     old_state = load_state()
-    pages = fetch_all_pages()
+
+    data_source_id = resolve_data_source_id()
+    pages = fetch_all_pages(data_source_id)
 
     new_state = {}
     embeds = []

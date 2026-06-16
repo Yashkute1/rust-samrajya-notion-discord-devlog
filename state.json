@@ -1,1 +1,154 @@
-{}
+{
+  "0abcc99d-2b54-44ea-932b-f1b2af5d886b": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:06:00.000Z",
+    "priority": "Low",
+    "status": "To do",
+    "title": "Server-side: Change brown box (crate) loot tables",
+    "url": "https://app.notion.com/p/Server-side-Change-brown-box-crate-loot-tables-0abcc99d2b5444ea932bf1b2af5d886b"
+  },
+  "1d592331-a2e4-40b7-8804-5e22adbbdb34": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:06:00.000Z",
+    "priority": "Medium",
+    "status": "To do",
+    "title": "Server-side: Add VIP kits + VIP permissions",
+    "url": "https://app.notion.com/p/Server-side-Add-VIP-kits-VIP-permissions-1d592331a2e440b788045e22adbbdb34"
+  },
+  "1f4aa215-ab5c-4312-8d79-3ee404276b5f": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T16:19:00.000Z",
+    "priority": "High",
+    "status": "Done",
+    "title": "Automation & sync scripts deployed (cron + RCON + avatars)",
+    "url": "https://app.notion.com/p/Automation-sync-scripts-deployed-cron-RCON-avatars-1f4aa215ab5c43128d793ee404276b5f"
+  },
+  "24937532-385b-4d3e-b000-c5be7cf076ee": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "Low",
+    "status": "To do",
+    "title": "Add missing Activity tab icons (turrets, SAM, boombox, etc.)",
+    "url": "https://app.notion.com/p/Add-missing-Activity-tab-icons-turrets-SAM-boombox-etc-24937532385b4d3eb000c5be7cf076ee"
+  },
+  "5752c784-23dd-4f31-9f89-87263eb265fc": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "Low",
+    "status": "To do",
+    "title": "Finalize plugin docs + release package",
+    "url": "https://app.notion.com/p/Finalize-plugin-docs-release-package-5752c78423dd4f319f8987263eb265fc"
+  },
+  "630a4a07-ffd5-466c-b069-f5f9d0a6daca": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:06:00.000Z",
+    "priority": "Medium",
+    "status": "To do",
+    "title": "Server-side: Add starter kits (/kit)",
+    "url": "https://app.notion.com/p/Server-side-Add-starter-kits-kit-630a4a07ffd5466cb069f5f9d0a6daca"
+  },
+  "637f8a56-6dc0-40e8-a7b1-8f5cd53bf950": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "High",
+    "status": "To do",
+    "title": "Rotate database credentials (remove plaintext exposures)",
+    "url": "https://app.notion.com/p/Rotate-database-credentials-remove-plaintext-exposures-637f8a566dc040e8a7b18f5cd53bf950"
+  },
+  "733446fc-be02-4a52-b6a8-47304f51d202": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:06:00.000Z",
+    "priority": "High",
+    "status": "To do",
+    "title": "BUG: Per-wipe tab shows same values as all-time",
+    "url": "https://app.notion.com/p/BUG-Per-wipe-tab-shows-same-values-as-all-time-733446fcbe024a52b6a847304f51d202"
+  },
+  "7b6f70e8-5c2d-4b1e-b80c-d2f692400bd9": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "Medium",
+    "status": "To do",
+    "title": "Compress primary logo asset (target < 100 KB)",
+    "url": "https://app.notion.com/p/Compress-primary-logo-asset-target-100-KB-7b6f70e85c2d4b1eb80cd2f692400bd9"
+  },
+  "8b531cc0-0bbf-4178-8572-735b6ebe5c73": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:06:00.000Z",
+    "priority": "Medium",
+    "status": "To do",
+    "title": "BUG: Duplicate wipe entries (June 12, 2026) in selector/DB",
+    "url": "https://app.notion.com/p/BUG-Duplicate-wipe-entries-June-12-2026-in-selector-DB-8b531cc00bbf41788572735b6ebe5c73"
+  },
+  "ae4206ce-7f2f-46ba-8f25-1ab3cdc58777": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T16:33:00.000Z",
+    "priority": "Low",
+    "status": "Done",
+    "title": "Responsive leaderboard website launched",
+    "url": "https://app.notion.com/p/Responsive-leaderboard-website-launched-ae4206ce7f2f46ba8f251ab3cdc58777"
+  },
+  "b68b44e9-49c1-488a-93c3-a2daf2b15c43": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "High",
+    "status": "Done",
+    "title": "Core plugin built: RustStats.cs v1.4.0 (80+ metrics)",
+    "url": "https://app.notion.com/p/Core-plugin-built-RustStats-cs-v1-4-0-80-metrics-b68b44e949c1488a93c3a2daf2b15c43"
+  },
+  "c1957109-bb8d-4990-92ae-c3f14a9c7e0a": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "Medium",
+    "status": "To do",
+    "title": "Deduplicate wipe entries (June 12, 2026) in DB",
+    "url": "https://app.notion.com/p/Deduplicate-wipe-entries-June-12-2026-in-DB-c1957109bb8d499092aec3f14a9c7e0a"
+  },
+  "c9d2ac54-50aa-49d4-9af6-1e44310152e5": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "Medium",
+    "status": "Done",
+    "title": "MySQL schema set up (5 tables for stats/wipes/online/clans)",
+    "url": "https://app.notion.com/p/MySQL-schema-set-up-5-tables-for-stats-wipes-online-clans-c9d2ac5450aa49d49af61e44310152e5"
+  },
+  "ca842d47-d366-4ebf-9388-8b017eb82d8d": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "High",
+    "status": "Done",
+    "title": "Carbon compatibility migration complete",
+    "url": "https://app.notion.com/p/Carbon-compatibility-migration-complete-ca842d47d3664ebf93888b017eb82d8d"
+  },
+  "d47eec8a-265f-4dd0-887d-9da3c3b7d978": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "Medium",
+    "status": "To do",
+    "title": "Resolve Carbon clan parsing edge cases in sync script",
+    "url": "https://app.notion.com/p/Resolve-Carbon-clan-parsing-edge-cases-in-sync-script-d47eec8a265f4dd0887d9da3c3b7d978"
+  },
+  "eb1f9f8a-accd-4bac-97f3-d6a3b0415a9f": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:04:00.000Z",
+    "priority": "High",
+    "status": "To do",
+    "title": "Fix per-wipe tracking (separate current wipe vs all-time)",
+    "url": "https://app.notion.com/p/Fix-per-wipe-tracking-separate-current-wipe-vs-all-time-eb1f9f8aaccd4bac97f3d6a3b0415a9f"
+  },
+  "ef683e4e-b23b-41c4-8746-a2e84ff7106b": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:11:00.000Z",
+    "priority": "Done",
+    "status": "To do",
+    "title": "Remove temporary web test files (e.g., test.php)",
+    "url": "https://app.notion.com/p/Remove-temporary-web-test-files-e-g-test-php-ef683e4eb23b41c48746a2e84ff7106b"
+  },
+  "fd62388b-05c8-4ffb-a1e7-6cd9806fd5e0": {
+    "assignee": "Unassigned",
+    "last_edited_time": "2026-06-16T14:06:00.000Z",
+    "priority": "Low",
+    "status": "To do",
+    "title": "Server-side: Change barrel loot tables",
+    "url": "https://app.notion.com/p/Server-side-Change-barrel-loot-tables-fd62388b05c84ffba1e76cd9806fd5e0"
+  }
+}

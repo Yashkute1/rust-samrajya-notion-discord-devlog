@@ -23,8 +23,8 @@
     "assignee": null,
     "category": null,
     "due": null,
-    "last_edited_time": "2026-06-16T16:19:00.000Z",
-    "priority": "High",
+    "last_edited_time": "2026-06-16T17:46:00.000Z",
+    "priority": "Done",
     "status": "Done",
     "title": "Automation & sync scripts deployed (cron + RCON + avatars)",
     "url": "https://app.notion.com/p/Automation-sync-scripts-deployed-cron-RCON-avatars-1f4aa215ab5c43128d793ee404276b5f"
@@ -83,8 +83,8 @@
     "assignee": null,
     "category": null,
     "due": null,
-    "last_edited_time": "2026-06-16T14:04:00.000Z",
-    "priority": "Medium",
+    "last_edited_time": "2026-06-16T17:47:00.000Z",
+    "priority": "\u2014",
     "status": "To do",
     "title": "Compress primary logo asset (target < 100 KB)",
     "url": "https://app.notion.com/p/Compress-primary-logo-asset-target-100-KB-7b6f70e85c2d4b1eb80cd2f692400bd9"

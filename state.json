@@ -39,6 +39,16 @@
     "title": "Add missing Activity tab icons (turrets, SAM, boombox, etc.)",
     "url": "https://app.notion.com/p/Add-missing-Activity-tab-icons-turrets-SAM-boombox-etc-24937532385b4d3eb000c5be7cf076ee"
   },
+  "3890a4e0-cede-801e-bd27-d1aa24926253": {
+    "assignee": null,
+    "category": null,
+    "due": null,
+    "last_edited_time": "2026-06-24T12:37:00.000Z",
+    "priority": "Done",
+    "status": "Done",
+    "title": "Clan Tab Stats Wrong Entries",
+    "url": "https://app.notion.com/p/Clan-Tab-Stats-Wrong-Entries-3890a4e0cede801ebd27d1aa24926253"
+  },
   "5752c784-23dd-4f31-9f89-87263eb265fc": {
     "assignee": null,
     "category": null,
@@ -63,8 +73,8 @@
     "assignee": null,
     "category": null,
     "due": null,
-    "last_edited_time": "2026-06-16T14:04:00.000Z",
-    "priority": "High",
+    "last_edited_time": "2026-06-24T12:36:00.000Z",
+    "priority": "Done",
     "status": "To do",
     "title": "Rotate database credentials (remove plaintext exposures)",
     "url": "https://app.notion.com/p/Rotate-database-credentials-remove-plaintext-exposures-637f8a566dc040e8a7b18f5cd53bf950"
@@ -133,8 +143,8 @@
     "assignee": null,
     "category": null,
     "due": null,
-    "last_edited_time": "2026-06-16T14:04:00.000Z",
-    "priority": "Medium",
+    "last_edited_time": "2026-06-24T12:36:00.000Z",
+    "priority": "Done",
     "status": "Done",
     "title": "MySQL schema set up (5 tables for stats/wipes/online/clans)",
     "url": "https://app.notion.com/p/MySQL-schema-set-up-5-tables-for-stats-wipes-online-clans-c9d2ac5450aa49d49af61e44310152e5"

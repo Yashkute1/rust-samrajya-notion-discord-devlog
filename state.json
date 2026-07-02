@@ -63,11 +63,51 @@
     "assignee": null,
     "category": null,
     "due": null,
-    "last_edited_time": "2026-06-25T16:50:00.000Z",
-    "priority": "High",
+    "last_edited_time": "2026-07-02T10:50:00.000Z",
+    "priority": "Done",
     "status": "Doing",
     "title": "Increase Frags Probablity",
     "url": "https://app.notion.com/p/Increase-Frags-Probablity-38a0a4e0cede806a899bd1128ea70b37"
+  },
+  "3910a4e0-cede-8025-bc47-d05c83b9b531": {
+    "assignee": null,
+    "category": null,
+    "due": null,
+    "last_edited_time": "2026-07-02T10:55:00.000Z",
+    "priority": "Medium",
+    "status": "Medium",
+    "title": "Untitled",
+    "url": "https://app.notion.com/p/3910a4e0cede8025bc47d05c83b9b531"
+  },
+  "3910a4e0-cede-8046-a242-dcfd4ad83e1a": {
+    "assignee": null,
+    "category": null,
+    "due": null,
+    "last_edited_time": "2026-07-02T10:49:00.000Z",
+    "priority": "Low",
+    "status": "To do",
+    "title": "bug with Select Wipe button leader board",
+    "url": "https://app.notion.com/p/bug-with-Select-Wipe-button-leader-board-3910a4e0cede8046a242dcfd4ad83e1a"
+  },
+  "3910a4e0-cede-807f-bcd1-ea89f7e07600": {
+    "assignee": null,
+    "category": null,
+    "due": null,
+    "last_edited_time": "2026-07-02T10:55:00.000Z",
+    "priority": "Low",
+    "status": "To do",
+    "title": "Turret Kills / SAM Kills not logging",
+    "url": "https://app.notion.com/p/Turret-Kills-SAM-Kills-not-logging-3910a4e0cede807fbcd1ea89f7e07600"
+  },
+  "3910a4e0-cede-80d0-819b-d232086be82d": {
+    "assignee": null,
+    "category": null,
+    "due": null,
+    "last_edited_time": "2026-07-02T10:55:00.000Z",
+    "priority": "Low",
+    "status": "To do",
+    "title": "activity tab not working in leaderboard",
+    "url": "https://app.notion.com/p/activity-tab-not-working-in-leaderboard-3910a4e0cede80d0819bd232086be82d"
   },
   "5752c784-23dd-4f31-9f89-87263eb265fc": {
     "assignee": null,
